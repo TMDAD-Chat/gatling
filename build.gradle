@@ -1,0 +1,28 @@
+plugins {
+	id 'io.gatling.gradle' version '3.7.6.2'
+	id 'java'
+}
+
+group = 'es.unizar.tmdad'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	gatlingImplementation 'org.apache.commons:commons-lang3:3.12.0'
+}
+
+gatling {
+	simulations = {
+		include "**/es/unizar/tmdad/simulations/*Simulation*.*"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
